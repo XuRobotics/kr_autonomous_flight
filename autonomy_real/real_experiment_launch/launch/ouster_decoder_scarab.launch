@@ -12,7 +12,7 @@
   <arg name="metadata" default="ouster_metadata.json" doc="override default metadata file for replays"/>
   <arg name="viz" default="false" doc="whether to run a rviz"/>
   <arg name="rviz_config" default="-d $(find ouster_ros)/viz.rviz" doc="optional rviz config file"/>
-  <arg name="tf_prefix" default="" doc="namespace for tf transforms"/>
+  <arg name="tf_prefix" default="$(arg robot)" doc="namespace for tf transforms"/>
  
   <node pkg="ouster_decoder" name="os_node" type="ouster_driver" output="screen" required="true" ns="$(arg robot)">
     <param name="~/lidar_mode" type="string" value="$(arg lidar_mode)"/>
@@ -24,13 +24,22 @@
     <param name="~/imu_port" value="$(arg imu_port)"/>
     <param name="~/metadata" value="$(arg metadata)"/>
     </node>
+  
+  <!-- <include file="$(find ouster_ros)/launch/sensor.launch">
+    <arg name="ouster_ns" value="$(arg robot)"/>
+  </include> -->
+
+  <!-- <node pkg="topic_tools" name="relay_lidar_pc" type="relay"
+    args="/os_cloud_node/points /$(arg robot)/os_cloud_node/points"/> -->
+
 
   <include file="$(find ouster_decoder)/launch/decoder.launch">
     <arg name="lidar_ns" value="$(arg robot)"/>
     <arg name="driver_ns" value="os_node"/>
     <arg name="replay" value="false"/>
   </include>
+  
 
-  <include file="$(find real_experiment_launch)/launch/publish_baselink_pc.launch">
-  </include>
+  <!-- <include file="$(find real_experiment_launch)/launch/publish_baselink_pc.launch">
+  </include> -->
 </launch>

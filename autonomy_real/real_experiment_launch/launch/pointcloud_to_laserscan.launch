@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- <arg name="agent"       default="$(env AGENT)" />
+  <group ns="$(arg agent)"> -->
+
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="ouster_laserscan_node" output="screen" required="true">
+        <remap from="/cloud_in" to="/$(env AGENT)/cloud"/><!--  The input point cloud-->
+        <remap from="/scan" to="/$(env AGENT)/scan"/> <!-- output laser scan (ie scarab40/scan/) -->
+
+        <param name="~/min_height"        value="0.0"/>
+        <param name="~/max_height"        value="3.0"/>
+        <!-- <param name="~/angle_min"         value="-1.57079632679"/> 
+        <param name="~/angle_max"         value="1.57079632679"/>
+        <param name="~/angle_increment"   value="0.00872664625"/> -->
+        <param name="~/scan_time"         value="1/20.0"/> 
+        <param name="~/range_min"         value="0.8"/>
+        <param name="~/range_max"         value="40"/>       
+        <!-- <param name="~/target_frame"      value=""/> # Leave disabled to output scan in pointcloud frame -->
+        <param name="~/concurrency_level" value="0"/>
+        <param name="~/use_inf"           value="true"/>
+
+    </node>
+  <!-- </group> -->
+
+</launch>

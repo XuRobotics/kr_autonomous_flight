@@ -1,0 +1,11 @@
+repositories:
+  # remember to remove other versions of ouster_example repo first 
+  ouster_example:
+    type: git
+    url: http://github.com/ouster-lidar/ouster_example.git
+    version: 3a61f8d 
+
+  ouster_decoder:
+    type: git
+    url: http://github.com/KumarRobotics/ouster_decoder.git
+    version: 6d5e5e
