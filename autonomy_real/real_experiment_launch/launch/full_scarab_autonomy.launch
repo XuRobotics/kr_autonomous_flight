@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <include file="$(find real_experiment_launch)/launch/publish_baselink_pc.launch">
+  </include>
+
+  <include file="$(find real_experiment_launch)/launch/max_seam_sensors.launch">
+    <arg name="record_bag" value="false"/>
+    <arg name="robot" value="$(env AGENT)"/>
+  </include>
+
+  <include file="$(find real_experiment_launch)/launch/ouster_decoder_scarab.launch">
+  </include>
+
+  <include file="$(find real_experiment_launch)/launch/llol_scarab.launch">
+  </include>
+
+  <include file="$(find scarab)/launch/navigation.launch">
+  </include>
+
+</launch>

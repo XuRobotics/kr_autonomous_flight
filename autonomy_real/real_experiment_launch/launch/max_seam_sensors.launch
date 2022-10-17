@@ -6,6 +6,7 @@
 
 	<arg name="record_bag" default="true"/>
 	<arg name="robot" default="quadrotor"/>
+  <arg name="scarab" default="false"/>
 
 
   
@@ -23,12 +24,21 @@
 
    
   <!-- publish_tf -->
+  <group unless="$(arg scarab)"> 
     <include file="$(find real_experiment_launch)/launch/publish_tf.launch">
       <arg name="robot" value="$(arg robot)"/>
       <arg name="robot_frame_id" value="$(arg robot)/base_link"/>
       <arg name="vio_imu_frame_id" value="$(arg robot)/ovc_camera_link"/>
    </include>
- 
+  </group>
+
+   <group if="$(arg scarab)"> 
+    <include file="$(find real_experiment_launch)/launch/publish_tf_scarab.launch">
+      <arg name="robot" value="$(arg robot)"/>
+      <arg name="robot_frame_id" value="$(arg robot)/base_link"/>
+      <arg name="vio_imu_frame_id" value="$(arg robot)/ovc_camera_link"/>
+   </include>
+  </group>
 
   <!-- bag record  -->
 	<group if="$(arg record_bag)"> 
