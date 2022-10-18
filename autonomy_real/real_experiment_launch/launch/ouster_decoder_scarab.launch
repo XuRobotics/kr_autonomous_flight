@@ -37,6 +37,9 @@
     <arg name="lidar_ns" value="$(arg robot)"/>
     <arg name="driver_ns" value="os_node"/>
     <arg name="replay" value="false"/>
+    <arg name="sensor_frame" default="$(arg robot)/os_sensor_raw"/>
+    <arg name="lidar_frame" default="$(arg robot)/os_lidar_raw"/>
+    <arg name="imu_frame" default="$(arg robot)/os_imu_raw"/>
   </include>
   
 

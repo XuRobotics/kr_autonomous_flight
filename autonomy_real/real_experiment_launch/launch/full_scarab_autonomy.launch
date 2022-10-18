@@ -10,7 +10,7 @@
   <include file="$(find real_experiment_launch)/launch/llol_scarab.launch">
   </include>
 
-  <include file="$(find real_experiment_launch)/launch/navigation.launch">
+  <include file="$(find real_experiment_launch)/launch/navigation_scarab.launch">
   </include>
 
 </launch>
