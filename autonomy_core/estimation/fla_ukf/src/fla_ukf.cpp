@@ -247,12 +247,11 @@ bool FLAUKF::MeasurementUpdateLaser(const MeasLaserVec &z,
   return true;
 }
 
-bool FLAUKF::MeasurementUpdateSE3(const MeasCamVec &z, const MeasCamCov &RnCam,
+bool FLAUKF::MeasurementUpdateCam(const MeasCamVec &z, const MeasCamCov &RnCam,
                                   const ros::Time &time) {
   // Init
   if (!init_process_ || !init_meas_) {
-    std::cout << "Not initialized yet (probably no IMU received),"
-      " current measurementUpdateSE3:" << std::endl;
+    std::cout << "MeasurementUpdateCam:" << std::endl;
     for (unsigned int i = 0; i < meas_cam_count_; ++i) {
       xa_(meas_cam_idx_[i]) = z(i);
       std::cout << "z(" << i << "): " << z(i) << std::endl;
@@ -289,7 +288,7 @@ bool FLAUKF::MeasurementUpdateSE3(const MeasCamVec &z, const MeasCamCov &RnCam,
   Mat<meas_cam_count_, 2 * L + 1> Za;
   // Mean
   for (unsigned int k = 0; k < Xa.cols(); k++)
-    Za.col(k) = MeasurementModelSE3(Xa.col(k));
+    Za.col(k) = MeasurementModelCam(Xa.col(k));
 
   MeasCamVec z_pred =
       wm_.replicate<meas_cam_count_, 1>().cwiseProduct(Za).rowwise().sum();
@@ -331,7 +330,7 @@ bool FLAUKF::MeasurementUpdateSE3(const MeasCamVec &z, const MeasCamCov &RnCam,
   return true;
 }
 
-FLAUKF::MeasCamVec FLAUKF::MeasurementModelSE3(const StateVec &x) {
+FLAUKF::MeasCamVec FLAUKF::MeasurementModelCam(const StateVec &x) {
   MeasCamVec z;
   z.segment<3>(0) = x.segment<3>(0);
   z.segment<3>(3) = x.segment<3>(6);
