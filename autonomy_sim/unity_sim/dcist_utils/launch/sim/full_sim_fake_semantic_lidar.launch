@@ -7,13 +7,13 @@
   <arg name="robot" default="quadrotor" />  
   <arg name="min_dispersion_planner" default="false" />
   <arg name="run_graph_slam" default="false" />
-  <arg name="launch_unity" default="false" />
+  <arg name="launch_unity" default="true" />
   <arg name="coverage_planner" default="false" />
   <arg name="save_range_images" default="false" />
 
 
   <!-- If use onboard sensing, set it to be true and set odom to be ukf_odom /> -->
-  <arg name="onboard_sensing" default="false"/>
+  <arg name="onboard_sensing" default="true"/>
   <arg name="odom" value="/unity_command/ground_truth/$(arg robot)/odom" unless="$(arg onboard_sensing)"/>
   <arg name="odom" value="ukf_odom" if="$(arg onboard_sensing)"/>
 
@@ -71,6 +71,7 @@
     <arg name="takeoff_height" value="4" />
     <arg name="min_dispersion_planner" value="$(arg min_dispersion_planner)" />
     <arg name="lidar_cloud_topic" value="fake_lidar/cloud" />
+    <arg name="calibration_file" value="$(find estimation_launch)/config/msckf_calib_simulation.yaml" />
   </include>
 
   <include file="$(find client_launch)/launch/client.launch">
