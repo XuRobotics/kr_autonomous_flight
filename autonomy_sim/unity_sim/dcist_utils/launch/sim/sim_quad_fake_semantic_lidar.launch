@@ -11,8 +11,8 @@
     <!-- forest-like env -->
     <arg name="sim_binary_name" default="forest.x86_64" />
     <arg name="param_file" default="$(find dcist_utils)/config/forest.yaml" />
-    <arg name="uav_x" default="40.0" />
-    <arg name="uav_y" default="40.0" />
+    <arg name="uav_x" default="0.0" />
+    <arg name="uav_y" default="0.0" />
     <arg name="uav_z" default="1.0" />
 
     <arg name="ugv_1_x" default="50.0" />
