@@ -9,38 +9,51 @@
 
     <!-- x corresponds to z in Unity simulator, y corresponds to -x, z corresponds to y -->
     <!-- forest-like env -->
-    <arg name="sim_binary_name" default="forest.x86_64" />
+    <!-- <arg name="sim_binary_name" default="forest.x86_64" />
     <arg name="param_file" default="$(find dcist_utils)/config/forest.yaml" />
     <arg name="uav_x" default="0.0" />
     <arg name="uav_y" default="0.0" />
     <arg name="uav_z" default="1.0" />
 
-
-    <!-- grass -->
     <arg name="ugv_1_x" default="42.23" />
     <arg name="ugv_1_y" default="15.0" />
     <arg name="ugv_1_z" default="1.0" />
 
     <arg name="ugv_2_x" default="1.91" />
     <arg name="ugv_2_y" default="15" />
-    <arg name="ugv_2_z" default="1.0" />
+    <arg name="ugv_2_z" default="1.0" /> -->
 
 
     <!-- flooded-ground env -->
-    <!-- <arg name="sim_binary_name" default="original-files/arl-unity-robotics.x86_64" /> -->
-    <!-- <arg name="param_file" default="$(find arl_unity_ros)/config/floodedgrounds.yaml"/> -->
-    <!-- <arg name="uav_x" default="0.0" /> -->
-    <!-- <arg name="uav_y" default="0.0" /> -->
-    <!-- <arg name="uav_z" default="1.0" /> -->
-    <!--  -->
-    <!-- <arg name="ugv_1_x" default="10.0" /> -->
-    <!-- <arg name="ugv_1_y" default="10.0" /> -->
-    <!-- <arg name="ugv_1_z" default="1.0" /> -->
-    <!--  -->
-    <!-- <arg name="ugv_2_x" default="-10.0" /> -->
-    <!-- <arg name="ugv_2_y" default="5.0" /> -->
-    <!-- <arg name="ugv_2_z" default="1.0" /> -->
+    <!-- <arg name="sim_binary_name" default="original-files/arl-unity-robotics.x86_64" />
+    <arg name="param_file" default="$(find arl_unity_ros)/config/floodedgrounds.yaml" />
+    <arg name="uav_x" default="0.0" />
+    <arg name="uav_y" default="0.0" />
+    <arg name="uav_z" default="-2.5" />
+    <arg name="ugv_1_x" default="32.08" />
+    <arg name="ugv_1_y" default="12.5" />
+    <arg name="ugv_1_z" default="1.0" />
+    <arg name="ugv_2_x" default="1.91" />
+    <arg name="ugv_2_y" default="12.5" />
+    <arg name="ugv_2_z" default="1.0" /> -->
 
+
+    <!-- city env -->
+    <arg name="sim_binary_name" default="original-files/arl-unity-robotics.x86_64" />
+    <arg name="param_file" default="$(find arl_unity_ros)/config/overpasscity.yaml" />
+    <arg name="uav_x" default="0.0" />
+    <arg name="uav_y" default="0.0" />
+    <arg name="uav_z" default="1.0" />
+
+    <arg name="ugv_1_x" default="32.08" />
+    <arg name="ugv_1_y" default="12.5" />
+    <arg name="ugv_1_z" default="1.0" />
+
+    <arg name="ugv_2_x" default="1.91" />
+    <arg name="ugv_2_y" default="12.5" />
+    <arg name="ugv_2_z" default="1.0" />
+
+        
     <!-- launches the unity ros simulator -->
     <include file="$(find arl_unity_ros)/launch/simulator.launch">
         <arg name="param_file" value="$(arg param_file)" />
