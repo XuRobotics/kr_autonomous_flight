@@ -15,7 +15,7 @@
   <arg name="onboard_sensing" default="true" />
   <arg name="odom" value="/unity_command/ground_truth/$(arg robot)/odom" />
   <!-- <arg name="odom" value="/unity_command/ground_truth/$(arg robot)/odom" -->
-    <!-- unless="$(arg onboard_sensing)" /> -->
+  <!-- unless="$(arg onboard_sensing)" /> -->
   <!-- <arg name="odom" value="ukf_odom" if="$(arg onboard_sensing)" /> -->
 
   <!-- forest-like env -->
@@ -103,5 +103,9 @@
 
   <node name="robot" pkg="arl_unity_ros_air" type="rosflight_offboard.py" ns="$(arg robot)"
     output="screen" launch-prefix="bash -c 'sleep $(arg takeoff_node_start_delay); $0 $@' " />
+
+
+  <node name="ground_truth_odom_throttler" type="throttle" pkg="topic_tools"
+    args="messages /unity_command/ground_truth/quadrotor/odom 5 /unity_command/ground_truth/quadrotor/odom_throttled" />
 
 </launch>

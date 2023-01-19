@@ -9,9 +9,12 @@ Panels:
         - /TF1/Frames1
         - /Env1/Environment1
         - /Planner1
+        - /Planner1/global_path1
         - /Maps1
         - /Maps1/Local1
+        - /Maps1/Global1
         - /Estimation1
+        - /Estimation1/ground_truth_odom1
         - /Estimation1/ground_truth_odom1/Shape1
         - /Estimation1/vio_corrected1
         - /Estimation1/vio_corrected1/Shape1
@@ -19,10 +22,11 @@ Panels:
         - /Estimation1/vio_corrected1/Covariance1/Position1
         - /Estimation1/vio_corrected1/Covariance1/Orientation1
         - /Estimation1/vio_drifted1/Shape1
+        - /Estimation1/graphslam1
         - /Estimation1/graphslam1/Shape1
         - /Estimation1/ukf_odom1
         - /Estimation1/ukf_odom1/Shape1
-      Splitter Ratio: 0.5211267471313477
+      Splitter Ratio: 0.5201612710952759
     Tree Height: 278
   - Class: rviz/Selection
     Name: Selection
@@ -107,18 +111,18 @@ Visualization Manager:
     - Class: rviz/Group
       Displays:
         - Class: planning_rviz_plugins/Path
-          Enabled: true
+          Enabled: false
           LineColor: 204; 51; 204
-          LineScale: 0.4000000059604645
+          LineScale: 0.20000000298023224
           Name: global_path
           NodeColor: 85; 85; 255
           NodeScale: 0.5
           Queue Size: 10
           Topic: /quadrotor/global_plan_server/path
           Unreliable: false
-          Value: true
+          Value: false
         - Class: planning_rviz_plugins/Path
-          Enabled: true
+          Enabled: false
           LineColor: 0; 255; 0
           LineScale: 0.800000011920929
           Name: global_path_wrt_odom
@@ -127,7 +131,7 @@ Visualization Manager:
           Queue Size: 10
           Topic: /quadrotor/local_global_replan_server/local_global_server/global_path_wrt_odom
           Unreliable: false
-          Value: true
+          Value: false
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
@@ -157,7 +161,7 @@ Visualization Manager:
           Use rainbow: true
           Value: true
         - Class: planning_rviz_plugins/Path
-          Enabled: true
+          Enabled: false
           LineColor: 78; 154; 6
           LineScale: 0.800000011920929
           Name: cropped_global_path_to_local_goal
@@ -166,7 +170,7 @@ Visualization Manager:
           Queue Size: 10
           Topic: /quadrotor/local_global_replan_server/local_global_server/cropped_local_path
           Unreliable: false
-          Value: true
+          Value: false
         - AccColor: 10; 200; 55
           AccScale: 0.014999999664723873
           AccVis: true
@@ -219,7 +223,7 @@ Visualization Manager:
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 4.25
+            Max Value: 6.75
             Min Value: 3.25
             Value: true
           Axis: Z
@@ -310,8 +314,8 @@ Visualization Manager:
           Queue Size: 10
           Shape:
             Alpha: 1
-            Axes Length: 10
-            Axes Radius: 0.5
+            Axes Length: 3
+            Axes Radius: 2
             Color: 25; 255; 0
             Head Length: 0.30000001192092896
             Head Radius: 0.10000000149011612
@@ -342,11 +346,11 @@ Visualization Manager:
           Keep: 1
           Name: vio_corrected
           Position Tolerance: 0.10000000149011612
-          Queue Size: 10
+          Queue Size: 8
           Shape:
             Alpha: 1
-            Axes Length: 3
-            Axes Radius: 2
+            Axes Length: 10
+            Axes Radius: 0.5
             Color: 255; 25; 0
             Head Length: 0.30000001192092896
             Head Radius: 0.10000000149011612
@@ -408,7 +412,7 @@ Visualization Manager:
               Scale: 1
               Value: true
             Value: true
-          Enabled: false
+          Enabled: true
           Keep: 1
           Name: graphslam
           Position Tolerance: 0.10000000149011612
@@ -416,16 +420,16 @@ Visualization Manager:
           Shape:
             Alpha: 1
             Axes Length: 6
-            Axes Radius: 0.75
+            Axes Radius: 1
             Color: 255; 25; 0
             Head Length: 0.30000001192092896
             Head Radius: 0.10000000149011612
             Shaft Length: 1
             Shaft Radius: 0.05000000074505806
             Value: Axes
-          Topic: /graph_slam/odom
+          Topic: /factor_graph_atl/quadrotor/high_freq_odom
           Unreliable: false
-          Value: false
+          Value: true
         - Angle Tolerance: 0.10000000149011612
           Class: rviz/Odometry
           Covariance:
@@ -500,6 +504,22 @@ Visualization Manager:
       Transport Hint: raw
       Unreliable: false
       Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /ugv_markers
+      Name: Marker
+      Namespaces:
+        ugv_landmarks: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /bearing_markers
+      Name: Marker
+      Namespaces:
+        bearing_markers: true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 189; 234; 201
@@ -533,7 +553,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 84.9085922241211
+      Distance: 76.93876647949219
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -541,17 +561,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -22.80864906311035
-        Y: -17.26076316833496
-        Z: 28.333351135253906
+        X: 4.696076393127441
+        Y: -8.674201011657715
+        Z: -0.6541841626167297
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7853981852531433
+      Pitch: 1.2647963762283325
       Target Frame: ground_truth/quadrotor/quadrotor
-      Yaw: 0.7853981852531433
+      Yaw: 3.1304244995117188
     Saved: ~
 Window Geometry:
   Displays:

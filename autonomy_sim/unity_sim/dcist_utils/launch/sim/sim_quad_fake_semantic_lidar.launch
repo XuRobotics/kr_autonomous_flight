@@ -15,14 +15,15 @@
     <arg name="uav_y" default="0.0" />
     <arg name="uav_z" default="1.0" />
 
-    <arg name="ugv_1_x" default="50.0" />
-    <arg name="ugv_1_y" default="50.0" />
+
+    <!-- grass -->
+    <arg name="ugv_1_x" default="42.23" />
+    <arg name="ugv_1_y" default="15.0" />
     <arg name="ugv_1_z" default="1.0" />
 
-    <arg name="ugv_2_x" default="25.0" />
-    <arg name="ugv_2_y" default="47.0" />
+    <arg name="ugv_2_x" default="1.91" />
+    <arg name="ugv_2_y" default="15" />
     <arg name="ugv_2_z" default="1.0" />
-
 
 
     <!-- flooded-ground env -->
@@ -31,11 +32,11 @@
     <!-- <arg name="uav_x" default="0.0" /> -->
     <!-- <arg name="uav_y" default="0.0" /> -->
     <!-- <arg name="uav_z" default="1.0" /> -->
-<!--  -->
+    <!--  -->
     <!-- <arg name="ugv_1_x" default="10.0" /> -->
     <!-- <arg name="ugv_1_y" default="10.0" /> -->
     <!-- <arg name="ugv_1_z" default="1.0" /> -->
-<!--  -->
+    <!--  -->
     <!-- <arg name="ugv_2_x" default="-10.0" /> -->
     <!-- <arg name="ugv_2_y" default="5.0" /> -->
     <!-- <arg name="ugv_2_z" default="1.0" /> -->
